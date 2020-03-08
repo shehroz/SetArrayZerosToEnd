@@ -38,5 +38,24 @@ namespace Algorithms
 
             return arr;
         }
+        public static int[] SetZeroToStart(int[] arr)
+        {
+            int len = arr.Length;
+            int count = 0;
+            for (int i = len-1; i >= count; i--)
+            {
+                if(arr[i]==0)
+                {
+                    for (int j = i; j > 0; j--)
+                    {
+                        arr[j] = arr[j - 1];
+                        arr[j - 1] = 0;
+                    }
+                    count++;
+                }
+            }
+
+            return arr;
+        }
     }
 }
