@@ -22,14 +22,47 @@ namespace Algorithms
 
         }
 
+        public static int[] SetZeroToEndOptimized(int[] arr)
+        {
+            int index = 0, count = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i] != 0)
+                    arr[index++] = arr[i];
+                else
+                    count++;
+            }
+            for (int i = arr.Length - 1; i >= arr.Length - count; i--)
+            {
+                arr[i] = 0;
+            }
+
+            return arr;
+        }
+        public static int[] SetZeroToStartOptimized(int[] arr)
+        {
+            int index = arr.Length-1, count = 0;
+            for (int i = arr.Length-1; i >= 0; i--)
+            {
+                if (arr[i] != 0)
+                    arr[index--] = arr[i];
+                else
+                    count++;
+            }
+            for (int i = 0; i < count; i++)
+            {
+                arr[i] = 0;
+            }
+            return arr;
+        }
         public static int[] SetZeroToEnd(int[] arr)
         {
             int count = 0;
             for (int i = 0; i < arr.Length - count; i++)
             {
-                if(arr[i]==0)
+                if (arr[i] == 0)
                 {
-                    for (int j = i; j < arr.Length-1; j++)
+                    for (int j = i; j < arr.Length - 1; j++)
                     {
                         arr[j] = arr[j + 1];
                         arr[j + 1] = 0;
@@ -43,9 +76,9 @@ namespace Algorithms
         {
             int len = arr.Length;
             int count = 0;
-            for (int i = len-1; i >= count; i--)
+            for (int i = len - 1; i >= count; i--)
             {
-                if(arr[i]==0)
+                if (arr[i] == 0)
                 {
                     for (int j = i; j > 0; j--)
                     {
